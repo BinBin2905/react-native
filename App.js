@@ -1,11 +1,10 @@
 import { useState } from "react";
 import {
-  TextInput,
   StyleSheet,
   Text,
   View,
-  ScrollView,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 
 export default function App() {
@@ -19,13 +18,23 @@ export default function App() {
     { name: "browser", id: "7" },
   ]);
 
+  const pressHandler = (id) => {
+    setPeople((prevPeople) => {
+      return prevPeople.filter((person) => person.id != id);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         numColumns={2}
         keyExtractor={(item) => item.id}
         data={people}
-        renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => pressHandler(item.id)}>
+            <Text style={styles.item}>{item.name}</Text>
+          </TouchableOpacity>
+        )}
       />
 
       {/* <ScrollView>
