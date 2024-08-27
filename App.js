@@ -70,10 +70,8 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     padding: 40,
-    backgroundColor: "pink",
   },
   list: {
     marginTop: 20,
-    backgroundColor: "yellow",
   },
 });
